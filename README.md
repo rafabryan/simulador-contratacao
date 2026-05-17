@@ -22,3 +22,9 @@ O projeto é uma aplicação web estática e *client-side*, não exigindo a inst
 
 1. Clone este repositório no seu terminal:
    git clone [https://github.com/seu-usuario/skillmatch-js.git](https://github.com/seu-usuario/skillmatch-js.git)
+
+##Link do Trello do quadro Kanban
+https://trello.com/invite/b/6686ad8b260ad1e794692c1c/ATTI827cb9d8136a33191c8469c205f6b0297338EA89/modelo-de-projeto-scrum
+
+<img width="1889" height="745" alt="image" src="https://github.com/user-attachments/assets/0a2d3453-921c-4159-b488-add4b12fc9d8" />
+
