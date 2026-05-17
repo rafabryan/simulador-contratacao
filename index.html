@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\style.css">
+    <script src="JS\skillMatch.js" defer></script>
+    <title>SkillMatch JS: Simulador de Compatibilidade com Vaga Front-End Júnior</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+        <h1>SkillMatch JS: Simulador de Compatibilidade com Vaga Front-End Júnior</h1>
+        <p>Engine de triagem de candidatos para vagas de desenvolvimento frontend</p>
+    </header>
+    <main>
+        <div class="dashboard">
+            <!-- Coluna da esquerda perfil do candidato -->
+             <div class="space-y">
+                <h2>👤 Candidato</h2>
+                <p><strong>Nome:</strong> <span id="cand-nome">Carregando...</span></p>
+                <p><strong>Minhas Habilidades:</strong></p>
+                <div id="cand-skills" class="tag-container">
+                    <!--Gerado via JS -->
+                </div>
+
+                <button class="btn-analiser" onclick="executarEngine()">Rodar Motor de Análise 🤖</button>
+             </div>
+
+             <!-- Card de Resultado (Invisivel no Inicio )-->
+              <div id="result-box" class="card result-card" style="margin-top: 20px;">
+                <h2>🏆 Resultado da Triagem</h2>
+                <div class="result-content">
+                    <p><strong>Melhor Match:</strong> <span id="res-=vaga">-</span></p>
+                    <p><strong>Compatibilidade:</strong> <span id="res-percent">-</span></p
+                <div class="recommendation">
+                    <strong>📚 Recomendação de Estudo:</strong>
+                    <p id="res-estudo" style="margin-top: 5px; color: var(--text-main); font-size: 0.95rem;"></p>
+                </div>
+                </div>
+              </div>
+        </div>
+
+        <!--Coluna da Direita: Banco de Vagas-->
+
+        <div class="card">
+            <h2>🏢 Vagas Disponíveis e Requisitos</h2>
+            <div id="lista-vagas">
+                <!--Gerando via JS-->
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+</body>
+</html>
