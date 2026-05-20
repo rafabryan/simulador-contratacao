@@ -52,9 +52,6 @@ Analisar:
 ```bash
 node skillmatch.js
 
-
-# Arquivo: `planejamento/tarefas-kanban.md`
-
 ```
 # Quadro Kanban - SkillMatch JS
 
