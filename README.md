@@ -53,11 +53,9 @@ Analisar:
 node skillmatch.js
 
 
----
-
 # Arquivo: `planejamento/tarefas-kanban.md`
 
-```md
+```
 # Quadro Kanban - SkillMatch JS
 
 ## Backlog
