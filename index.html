@@ -8,34 +8,43 @@
     <title>SkillMatch JS: Simulador de Compatibilidade com Vaga Front-End Júnior</title>
 </head>
 <body>
-   <div class="container">
-        <header>
-            <h1>SkillMatch JS</h1>
-            <p>Simulador de Compatibilidade com Vagas Front-End</p>
-        </header>
+ 
+  <header>
+    <h1>SkillMatch JS</h1>
+    <p>Simulador de Compatibilidade com Vagas Front-End</p>
+  </header>
 
-        <!-- Perfil do Candidato -->
-        <div class="card" id="perfilCandidato">
-            <h2>👤 Perfil do Candidato: <span id="nomeCandidato"></span></h2>
-            <p><strong>Habilidades Atuais:</strong></p>
-            <div id="habilidadesCandidato"></div>
-        </div>
+  <main>
 
-        <!-- Botão para rodar a Engine -->
-        <button class="btn" onclick="executarSimulador()">Rodar Motor de Análise 🚀</button>
+    <section class="candidato">
+      <h2>Perfil do Candidato</h2>
 
-        <!-- Resultado Final / Recomendação -->
-        <div class="card" id="resultadoFinal">
-            <h2>🏆 Resultado da Triagem</h2>
-            <p><strong>Maior Compatibilidade:</strong> <span id="melhorVagaNome"></span> (<span id="melhorVagaPercentual"></span>%)</p>
-            <p style="margin-top: 10px;"><strong>📚 Recomendação:</strong> <span id="recomendacaoTexto"></span></p>
-        </div>
+      <div id="dados-candidato"></div>
+    </section>
 
-        <!-- Lista de Vagas Analisadas -->
-        <div class="card" id="listaVagas" style="display: none;">
-            <h2>🏢 Análise Detalhada das Vagas</h2>
-            <div id="vagasContainer"></div>
-        </div>
-    </div>
+    <section class="vagas">
+      <h2>Resultado das Vagas</h2>
+
+      <div id="resultado-vagas"></div>
+    </section>
+
+    <section class="melhor-vaga">
+      <h2>Vaga Mais Compatível</h2>
+
+      <div id="melhor-vaga"></div>
+    </section>
+
+    <section class="recomendacao">
+      <h2>Recomendação de Estudos</h2>
+
+      <div id="recomendacao-estudos"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Projeto SkillMatch JS - Mini Projeto Avaliativo</p>
+  </footer>
+
 </body>
 </html>
