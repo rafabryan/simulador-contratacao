@@ -244,3 +244,106 @@ async function iniciarSistema() {
 
 // Inicialização do sistema
 iniciarSistema();
+
+// ========================================
+// EXIBIÇÃO NO HTML
+// ========================================
+
+const dadosCandidato = document.getElementById("dados-candidato");
+
+dadosCandidato.innerHTML = `
+  <p><strong>Nome:</strong> ${candidato.nome}</p>
+  <p><strong>Área:</strong> ${candidato.area}</p>
+  <p><strong>Experiência:</strong> ${candidato.experienciaMeses} meses</p>
+  <p><strong>Habilidades:</strong> ${candidato.habilidades.join(", ")}</p>
+`;
+
+async function exibirResultadosNaTela() {
+
+  const vagasCarregadas = await buscarVagasSimuladas();
+
+  const resultadoVagas = document.getElementById("resultado-vagas");
+
+  const resultados = vagasCarregadas.map((vaga) => {
+
+    const resultado = analisarVaga(vaga, candidato);
+
+    let classeCompatibilidade = "";
+
+    if (resultado.compatibilidade >= 80) {
+      classeCompatibilidade = "alta";
+    } else if (resultado.compatibilidade >= 50) {
+      classeCompatibilidade = "media";
+    } else {
+      classeCompatibilidade = "baixa";
+    }
+
+    resultadoVagas.innerHTML += `
+      <div class="card-vaga">
+
+        <h3>${resultado.empresa}</h3>
+
+        <p><strong>Cargo:</strong> ${resultado.cargo}</p>
+
+        <p>
+          <strong>Compatibilidade:</strong>
+          <span class="${classeCompatibilidade}">
+            ${resultado.compatibilidade}%
+          </span>
+        </p>
+
+        <p>
+          <strong>Classificação:</strong>
+          ${resultado.classificacao}
+        </p>
+
+        <p>
+          <strong>Habilidades Encontradas:</strong>
+          ${resultado.habilidadesEncontradas.join(", ")}
+        </p>
+
+        <p>
+          <strong>Habilidades Faltantes:</strong>
+          ${resultado.habilidadesFaltantes.join(", ")}
+        </p>
+
+      </div>
+    `;
+
+    return resultado;
+  });
+
+  // Melhor vaga
+  const melhorVaga = resultados.reduce((melhor, atual) => {
+    return atual.compatibilidade > melhor.compatibilidade
+      ? atual
+      : melhor;
+  });
+
+  document.getElementById("melhor-vaga").innerHTML = `
+    <p>
+      <strong>${melhorVaga.empresa}</strong> -
+      ${melhorVaga.cargo}
+    </p>
+
+    <p>
+      Compatibilidade:
+      <strong>${melhorVaga.compatibilidade}%</strong>
+    </p>
+  `;
+
+  // Recomendação
+  const habilidadesParaEstudar = resultados
+    .flatMap((resultado) => resultado.habilidadesFaltantes);
+
+  const habilidadesUnicas = [...new Set(habilidadesParaEstudar)];
+
+  document.getElementById("recomendacao-estudos").innerHTML = `
+    <p>
+      Priorize estudar:
+      <strong>${habilidadesUnicas.join(", ")}</strong>
+    </p>
+  `;
+}
+
+exibirResultadosNaTela();
