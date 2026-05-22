@@ -1,135 +1,126 @@
-:root {
-            --primary-color: #4f46e5;
-            --bg-color: #f3f4f6;
-            --card-bg: #ffffff;
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-        }
+/* RESET */
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            padding: 2rem;
-            line-height: 1.5;
-        }
+/* BODY */
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+}
 
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+/* HEADER */
 
-        header h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-        }
+header {
+  background-color: #1e3a8a;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
 
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
+header h1 {
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+}
 
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e5e7eb;
-        }
+/* MAIN */
 
-        .card h2 {
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-        }
+main {
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px auto;
+}
 
-        .tag {
-            display: inline-block;
-            background-color: #e0e7ff;
-            color: var(--primary-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin: 0.25rem;
-        }
+/* SECTIONS */
 
-        .tag.missing {
-            background-color: #fee2e2;
-            color: var(--danger);
-        }
+section {
+  background-color: white;
+  margin-bottom: 25px;
+  padding: 20px;
+  border-radius: 10px;
 
-        .tag.has {
-            background-color: #d1fae5;
-            color: var(--success);
-        }
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 
-        .vaga-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px dashed #e5e7eb;
-        }
+section h2 {
+  color: #1e3a8a;
+  margin-bottom: 15px;
+}
 
-        .vaga-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
+/* CARD DAS VAGAS */
 
-        .vaga-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
+.card-vaga {
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
 
-        .percentual {
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
+  transition: 0.3s;
+}
 
-        .btn {
-            display: block;
-            width: 100%;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 1rem;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.2s;
-            margin-bottom: 1.5rem;
-        }
+.card-vaga:hover {
+  transform: scale(1.01);
+}
 
-        .btn:hover {
-            background-color: #4338ca;
-        }
+.card-vaga h3 {
+  color: #2563eb;
+  margin-bottom: 10px;
+}
 
-        #resultadoFinal {
-            display: none;
-            background-color: #ecfdf5;
-            border-left: 5px solid var(--success);
-        }
+.card-vaga p {
+  margin-bottom: 8px;
+}
 
-        #resultadoFinal h2 {
-            color: #065f46;
-            border-bottom-color: #a7f3d0;
-        }
+/* CLASSIFICAÇÕES */
+
+.alta {
+  color: green;
+  font-weight: bold;
+}
+
+.media {
+  color: orange;
+  font-weight: bold;
+}
+
+.baixa {
+  color: red;
+  font-weight: bold;
+}
+
+/* LISTAS */
+
+ul {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  background-color: #1e3a8a;
+  color: white;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    width: 95%;
+  }
+
+}
