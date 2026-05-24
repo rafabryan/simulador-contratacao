@@ -1,6 +1,6 @@
 # SkillMatch JS
 
-Projeto desenvolvido pelos alunos Rafael Ferreira da Silva e Karina M. Vieria em JavaScript puro para simular a compatibilidade entre um candidato Front-End Júnior e vagas fictícias da área de tecnologia.
+Projeto desenvolvido pelos alunos Rafael Ferreira da Silva, Karina M. Vieria, Manuelli K. da turma de Front-End  e em JavaScript puro para simular a compatibilidade entre um candidato Front-End Júnior e vagas fictícias da área de tecnologia.
 
 ## Objetivo
 
