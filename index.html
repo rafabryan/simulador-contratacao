@@ -8,43 +8,34 @@
     <title>SkillMatch JS: Simulador de Compatibilidade com Vaga Front-End Júnior</title>
 </head>
 <body>
- 
-  <header>
+
+  <div class="container">
+
     <h1>SkillMatch JS</h1>
-    <p>Simulador de Compatibilidade com Vagas Front-End</p>
-  </header>
+    <p class="descricao">
+      Simulador de Compatibilidade com Vagas
+    </p>
 
-  <main>
-
-    <section class="candidato">
+    <section class="perfil">
       <h2>Perfil do Candidato</h2>
 
-      <div id="dados-candidato"></div>
+      <p><strong>Nome:</strong> <span id="nome"></span></p>
+      <p><strong>Área:</strong> <span id="area"></span></p>
+      <p><strong>Experiência:</strong> <span id="experiencia"></span> meses</p>
+
+      <div class="habilidades" id="habilidades"></div>
     </section>
 
-    <section class="vagas">
-      <h2>Resultado das Vagas</h2>
+    <section class="vagas" id="vagasContainer"></section>
 
-      <div id="resultado-vagas"></div>
-    </section>
+    <section class="melhor-vaga" id="melhorVaga"></section>
 
-    <section class="melhor-vaga">
-      <h2>Vaga Mais Compatível</h2>
+    <section class="estudos" id="estudos"></section>
 
-      <div id="melhor-vaga"></div>
-    </section>
+    <footer>
+      Projeto desenvolvido com HTML5, CSS3 e JavaScript
+    </footer>
 
-    <section class="recomendacao">
-      <h2>Recomendação de Estudos</h2>
-
-      <div id="recomendacao-estudos"></div>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>Projeto SkillMatch JS - Mini Projeto Avaliativo</p>
-  </footer>
-
+  </div>
 </body>
 </html>
