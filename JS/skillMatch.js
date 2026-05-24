@@ -1,246 +1,252 @@
-// ========================================
-// SkillMatch JS
-// Simulador de Compatibilidade com Vagas
-// ========================================
 
-// RF01 - Perfil do candidato
-const candidato = {
-  nome: "Ana Souza",
-  area: "Front-End",
-  habilidades: [
-    "JavaScript",
-    "GitHub",
-    "Lógica de Programação",
-    "Kanban"
-  ],
-  experienciaMeses: 3
-};
+    // ========================================
+    // SkillMatch JS
+    // ========================================
 
-// RF09 - Classe principal
-class Vaga {
-  constructor(id, empresa, cargo, requisitos, salario, modalidade) {
-    this.id = id;
-    this.empresa = empresa;
-    this.cargo = cargo;
-    this.requisitos = requisitos;
-    this.salario = salario;
-    this.modalidade = modalidade;
-  }
+    const candidato = {
+      nome: "Ana Souza",
+      area: "Front-End",
+      habilidades: [
+        "JavaScript",
+        "GitHub",
+        "Lógica de Programação",
+        "Kanban"
+      ],
+      experienciaMeses: 3
+    };
 
-  // RF11 - Uso do this
-  exibirResumo() {
-    return `${this.cargo} na empresa ${this.empresa}`;
-  }
-}
+    class Vaga {
+      constructor(id, empresa, cargo, requisitos, salario, modalidade) {
+        this.id = id;
+        this.empresa = empresa;
+        this.cargo = cargo;
+        this.requisitos = requisitos;
+        this.salario = salario;
+        this.modalidade = modalidade;
+      }
 
-// RF10 - Herança
-class VagaFrontEnd extends Vaga {
-  constructor(
-    id,
-    empresa,
-    cargo,
-    requisitos,
-    salario,
-    modalidade,
-    nivel
-  ) {
-    super(id, empresa, cargo, requisitos, salario, modalidade);
-    this.nivel = nivel;
-  }
+      exibirResumo() {
+        return `${this.cargo} na empresa ${this.empresa}`;
+      }
+    }
 
-  exibirNivel() {
-    return `Nível da vaga: ${this.nivel}`;
-  }
-}
+    class VagaFrontEnd extends Vaga {
+      constructor(
+        id,
+        empresa,
+        cargo,
+        requisitos,
+        salario,
+        modalidade,
+        nivel
+      ) {
+        super(id, empresa, cargo, requisitos, salario, modalidade);
+        this.nivel = nivel;
+      }
 
-// RF02 - Lista de vagas
-const vagas = [
-  new VagaFrontEnd(
-    1,
-    "TechStart",
-    "Desenvolvedor Front-End Júnior",
-    ["JavaScript", "GitHub", "Lógica de Programação"],
-    2800,
-    "Remoto",
-    "Júnior"
-  ),
+      exibirNivel() {
+        return `Nível da vaga: ${this.nivel}`;
+      }
+    }
 
-  new VagaFrontEnd(
-    2,
-    "CodeLab",
-    "Estágio Front-End",
-    ["JavaScript", "Kanban", "GitHub"],
-    1800,
-    "Híbrido",
-    "Estágio"
-  ),
+    const vagas = [
+      new VagaFrontEnd(
+        1,
+        "TechStart",
+        "Desenvolvedor Front-End Júnior",
+        ["JavaScript", "GitHub", "Lógica de Programação"],
+        2800,
+        "Remoto",
+        "Júnior"
+      ),
 
-  new VagaFrontEnd(
-    3,
-    "WebSolutions",
-    "Programador JavaScript Júnior",
-    ["JavaScript", "Arrays", "Objetos", "Funções"],
-    3000,
-    "Presencial",
-    "Júnior"
-  )
-];
+      new VagaFrontEnd(
+        2,
+        "CodeLab",
+        "Estágio Front-End",
+        ["JavaScript", "Kanban", "GitHub"],
+        1800,
+        "Híbrido",
+        "Estágio"
+      ),
 
-// RF13 - Closure
-function criarContadorDeAnalises() {
-  let total = 0;
+      new VagaFrontEnd(
+        3,
+        "WebSolutions",
+        "Programador JavaScript Júnior",
+        ["JavaScript", "Arrays", "Objetos", "Funções"],
+        3000,
+        "Presencial",
+        "Júnior"
+      )
+    ];
 
-  return function () {
-    total++;
-    return total;
-  };
-}
+    function criarContadorDeAnalises() {
+      let total = 0;
 
-const contarAnalise = criarContadorDeAnalises();
+      return function () {
+        total++;
+        return total;
+      };
+    }
 
-// RF04 - Classificação da compatibilidade
-function classificarCompatibilidade(percentual) {
-  if (percentual >= 80) {
-    return "Alta compatibilidade";
-  } else if (percentual >= 50) {
-    return "Média compatibilidade";
-  } else {
-    return "Baixa compatibilidade";
-  }
-}
+    const contarAnalise = criarContadorDeAnalises();
 
-// RF03 + RF05 + RF08
-function analisarVaga(vaga, candidato) {
+    function classificarCompatibilidade(percentual) {
+      if (percentual >= 80) {
+        return "Alta compatibilidade";
+      } else if (percentual >= 50) {
+        return "Média compatibilidade";
+      } else {
+        return "Baixa compatibilidade";
+      }
+    }
 
-  // filter -> habilidades encontradas
-  const habilidadesEncontradas = vaga.requisitos.filter((habilidade) =>
-    candidato.habilidades.includes(habilidade)
-  );
+    function analisarVaga(vaga, candidato) {
 
-  // filter -> habilidades faltantes
-  const habilidadesFaltantes = vaga.requisitos.filter(
-    (habilidade) => !candidato.habilidades.includes(habilidade)
-  );
+      const habilidadesEncontradas = vaga.requisitos.filter((habilidade) =>
+        candidato.habilidades.includes(habilidade)
+      );
 
-  // cálculo da compatibilidade
-  const compatibilidade =
-    (habilidadesEncontradas.length / vaga.requisitos.length) * 100;
+      const habilidadesFaltantes = vaga.requisitos.filter(
+        (habilidade) => !candidato.habilidades.includes(habilidade)
+      );
 
-  return {
-    empresa: vaga.empresa,
-    cargo: vaga.cargo,
-    compatibilidade: compatibilidade.toFixed(0),
-    habilidadesEncontradas,
-    habilidadesFaltantes,
-    classificacao: classificarCompatibilidade(compatibilidade)
-  };
-}
+      const compatibilidade =
+        (habilidadesEncontradas.length / vaga.requisitos.length) * 100;
 
-// RF12 - Callback
-function finalizarAnalise(nomeCandidato, callback) {
-  console.log("\nAnálise finalizada.");
-  callback(nomeCandidato);
-}
+      return {
+        empresa: vaga.empresa,
+        cargo: vaga.cargo,
+        compatibilidade: compatibilidade.toFixed(0),
+        habilidadesEncontradas,
+        habilidadesFaltantes,
+        classificacao: classificarCompatibilidade(compatibilidade)
+      };
+    }
 
-function exibirMensagemFinal(nome) {
-  console.log(
-    `${nome}, revise suas habilidades faltantes e atualize seu plano de estudos.`
-  );
-}
+    function buscarVagasSimuladas() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(vagas);
+        }, 1000);
+      });
+    }
 
-// RF14 - Promise
-function buscarVagasSimuladas() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(vagas);
-    }, 1000);
-  });
-}
+    function exibirPerfil() {
+      document.getElementById("nome").textContent = candidato.nome;
+      document.getElementById("area").textContent = candidato.area;
+      document.getElementById("experiencia").textContent = candidato.experienciaMeses;
 
-// Async/Await
-async function iniciarSistema() {
+      const habilidadesContainer = document.getElementById("habilidades");
 
-  console.log("Carregando vagas...\n");
+      candidato.habilidades.forEach((habilidade) => {
+        const span = document.createElement("span");
+        span.classList.add("tag");
+        span.textContent = habilidade;
+        habilidadesContainer.appendChild(span);
+      });
+    }
 
-  const vagasCarregadas = await buscarVagasSimuladas();
+    async function iniciarSistema() {
 
-  console.log("Vagas carregadas com sucesso!\n");
+      exibirPerfil();
 
-  // RF08 - map
-  const resultados = vagasCarregadas.map((vaga) => {
-    const resultado = analisarVaga(vaga, candidato);
+      const vagasCarregadas = await buscarVagasSimuladas();
 
-    console.log("==================================");
-    console.log(`Empresa: ${resultado.empresa}`);
-    console.log(`Cargo: ${resultado.cargo}`);
-    console.log(`Compatibilidade: ${resultado.compatibilidade}%`);
-    console.log(
-      `Habilidades encontradas: ${resultado.habilidadesEncontradas.join(", ")}`
-    );
-    console.log(
-      `Habilidades faltantes: ${resultado.habilidadesFaltantes.join(", ")}`
-    );
-    console.log(`Classificação: ${resultado.classificacao}`);
-    console.log("==================================\n");
+      const container = document.getElementById("vagasContainer");
 
-    console.log(`Resumo: ${vaga.exibirResumo()}`);
-    console.log(vaga.exibirNivel());
+      const resultados = vagasCarregadas.map((vaga) => {
 
-    console.log(
-      `Total de análises realizadas: ${contarAnalise()}\n`
-    );
+        const resultado = analisarVaga(vaga, candidato);
 
-    return resultado;
-  });
+        let classeCompatibilidade = "baixa";
 
-  // RF06 - reduce
-  const melhorVaga = resultados.reduce((melhor, atual) => {
-    return atual.compatibilidade > melhor.compatibilidade
-      ? atual
-      : melhor;
-  });
+        if (resultado.compatibilidade >= 80) {
+          classeCompatibilidade = "alta";
+        } else if (resultado.compatibilidade >= 50) {
+          classeCompatibilidade = "media";
+        }
 
-  console.log("\n******** VAGA MAIS COMPATÍVEL ********");
-  console.log(`${melhorVaga.empresa} - ${melhorVaga.cargo}`);
-  console.log(`Compatibilidade: ${melhorVaga.compatibilidade}%`);
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-  // RF07 - Recomendação de estudo
-  const habilidadesParaEstudar = resultados
-    .flatMap((resultado) => resultado.habilidadesFaltantes);
+        card.innerHTML = `
+          <div class="empresa">${resultado.empresa}</div>
 
-  // remove duplicadas
-  const habilidadesUnicas = [...new Set(habilidadesParaEstudar)];
+          <div class="cargo">${resultado.cargo}</div>
 
-  console.log("\n******** RECOMENDAÇÃO DE ESTUDO ********");
+          <p><strong>Modalidade:</strong> ${vaga.modalidade}</p>
+          <p><strong>Salário:</strong> R$ ${vaga.salario}</p>
+          <p><strong>${vaga.exibirNivel()}</strong></p>
 
-  if (habilidadesUnicas.length > 0) {
-    console.log(
-      `Priorize estudar: ${habilidadesUnicas.join(", ")}`
-    );
-  } else {
-    console.log("Você atende todos os requisitos das vagas!");
-  }
+          <div class="compatibilidade ${classeCompatibilidade}">
+            Compatibilidade: ${resultado.compatibilidade}%
+          </div>
 
-  // RF08 - find
-  const vagaCodeLab = vagasCarregadas.find(
-    (vaga) => vaga.empresa === "CodeLab"
-  );
+          <p><strong>Classificação:</strong> ${resultado.classificacao}</p>
 
-  console.log("\nBusca utilizando find:");
-  console.log(vagaCodeLab.exibirResumo());
+          <p><strong>Habilidades encontradas:</strong></p>
+          <ul>
+            ${resultado.habilidadesEncontradas
+              .map((h) => `<li>${h}</li>`)
+              .join("")}
+          </ul>
 
-  // RF08 - every
-  const atendeTodosRequisitos = vagasCarregadas.every((vaga) =>
-    vaga.requisitos.every((requisito) =>
-      candidato.habilidades.includes(requisito)
-    )
-  );
+          <p><strong>Habilidades faltantes:</strong></p>
+          <ul>
+            ${resultado.habilidadesFaltantes.length > 0
+              ? resultado.habilidadesFaltantes
+                  .map((h) => `<li>${h}</li>`)
+                  .join("")
+              : "<li>Nenhuma</li>"
+            }
+          </ul>
 
-  console.log("\nAtende todas as vagas?");
-  console.log(atendeTodosRequisitos ? "Sim" : "Não");
+          <p><strong>Total de análises:</strong> ${contarAnalise()}</p>
+        `;
 
-  finalizarAnalise(candidato.nome, exibirMensagemFinal);
-}
+        container.appendChild(card);
 
-// Inicialização do sistema
-iniciarSistema();
+        return resultado;
+      });
+
+      const melhorVaga = resultados.reduce((melhor, atual) => {
+        return atual.compatibilidade > melhor.compatibilidade
+          ? atual
+          : melhor;
+      });
+
+      document.getElementById("melhorVaga").innerHTML = `
+        <h2>Vaga Mais Compatível</h2>
+
+        <p>
+          <strong>${melhorVaga.empresa}</strong> -
+          ${melhorVaga.cargo}
+        </p>
+
+        <p>
+          Compatibilidade:
+          <strong>${melhorVaga.compatibilidade}%</strong>
+        </p>
+      `;
+
+      const habilidadesParaEstudar = resultados
+        .flatMap((resultado) => resultado.habilidadesFaltantes);
+
+      const habilidadesUnicas = [...new Set(habilidadesParaEstudar)];
+
+      document.getElementById("estudos").innerHTML = `
+        <h2>Recomendação de Estudos</h2>
+
+        <p>
+          ${
+            habilidadesUnicas.length > 0
+              ? `Priorize estudar: ${habilidadesUnicas.join(", ")}`
+              : "Você atende todos os requisitos das vagas!"
+          }
+        </p>
+      `;
+    }
+
+    iniciarSistema();
